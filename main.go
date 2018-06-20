@@ -16,6 +16,7 @@ import (
 
 func init() {
 	orm.RegisterDriver("mysql", orm.DRMySQL)
+	//这块有点坑 需要tcp()起来些ip与端口
 	orm.RegisterDataBase("default", "mysql", "root:ZXdc.yjsb12@tcp(192.168.1.157:3306)/orm_db?charset=utf8")
 }
 
