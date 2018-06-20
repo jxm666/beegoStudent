@@ -2,9 +2,9 @@ package main
 
 import (
 	_ "studentLog/routers"
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/astaxie/beego"
 	"fmt"
 	"studentLog/models"
 )
@@ -29,7 +29,7 @@ func main() {
 	o := orm.NewOrm()
 	o.Using("default") // 默认使用 default，你可以指定为其他数据库
 
-	profile := new(models.Profile)
+/*	profile := new(models.Profile)
 	profile.Age = 30
 
 	user := new(models.User)
@@ -37,8 +37,22 @@ func main() {
 	user.Name = "slene"
 
 	fmt.Println(o.Insert(profile))
-	fmt.Println(o.Insert(user))
+	fmt.Println(o.Insert(user))*/
 
+
+	//CRUD 操作演示
+	user := &models.MyUser{Name:"test 3"}
+	//new 对象返回是对象的指针地址
+	/*user := new (models.MyUser)
+	user.Name="test "*/
+
+	//fmt.Println(user)
+	fmt.Println(o.Insert(user))
+	user.Name = "updat test3"
+
+	fmt.Println(o.Update(user))
+	fmt.Println(o.Read(user))
+	fmt.Println(o.Delete(user))
 
 	beego.Run()
 }

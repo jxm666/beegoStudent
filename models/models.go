@@ -8,6 +8,13 @@ type User struct {
 	Profile     *Profile   `orm:"rel(one)"` // OneToOne relation
 	Post        []*Post `orm:"reverse(many)"` // 设置一对多的反向关系
 }
+//自定义
+type MyUser struct {
+	Id          int
+	Name        string
+}
+
+
 
 type Profile struct {
 	Id          int
@@ -30,5 +37,5 @@ type Tag struct {
 
 func init() {
 	// 需要在init中注册定义的model
-	orm.RegisterModel(new(User), new(Post), new(Profile), new(Tag))
+	orm.RegisterModel(new(User), new(Post), new(Profile), new(Tag),new(MyUser))
 }
